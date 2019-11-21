@@ -12,27 +12,18 @@ switch (scelta) {
     case 0:
         var minimo = 1;
         var massimo = 50;
-        // Genero 16 numeri casuali tra 0 e 100 controllando che non siano uguali
-        // Riempio l'array con 16 numeri random diversi in base al  livello scelto dall'utente
         generaArrayRandom(minimo, massimo);
         affondato = gioca(minimo, massimo);
         break ;
     case 1:
         var minimo = 1;
         var massimo = 80;
-        // Genero 16 numeri casuali tra 0 e 100 controllando che non siano uguali
-        // Riempio l'array con 16 numeri random diversi in base al  livello scelto dall'utente
         generaArrayRandom(minimo, massimo);
         affondato = gioca(minimo, massimo);
         break ;
     default:
         var minimo = 1;
         var massimo = 100;
-        // Genero 16 numeri casuali tra 0 e 100 controllando che non siano uguali
-        var maxcasuali = 16;
-        var numericasuali = [];
-
-        // Riempio l'array con 16 numeri random diversi in base al  livello scelto dall'utente
         generaArrayRandom(minimo, massimo);
         affondato = gioca(minimo, massimo);
 }
@@ -48,9 +39,8 @@ console.log('Il tuo punteggio finale è: ' + puntiutente);
 
 // Funzione che fà la logica del gioco
 function gioca(min, max) {
-    // Chiedo all'utente un numero tra 1 e 100
     var numeriutente = []; //Dichiaro un array per conservare i numeri inseriti dall'utente
-    var numerotentativi =  max - numericasuali.length; //Numero massimo di giocate previste
+    var numerotentativi =  max - numericasuali.length; // Numero massimo di giocate previste
     console.log(numerotentativi);
     // numerotentativi = 5;
     console.log('Numero di giocate previste ' + numerotentativi);
