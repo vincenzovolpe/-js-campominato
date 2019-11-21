@@ -30,10 +30,13 @@ switch (scelta) {
 
 // Verifico l'esito della partita
 if (affondato) {
+    alert('Colpito e affondato!!!!....Hai beccato una mina!!!')
     console.log('Colpito e affondato!!!!....Hai beccato una mina!!!');
 } else {
+    alert('Complimenti hai vinto la battaglia!!!')
     console.log('Complimenti hai vinto la battaglia!!!');
 }
+    alert('Il tuo punteggio finale è: ' + puntiutente);
 console.log('Il tuo punteggio finale è: ' + puntiutente);
 
 
