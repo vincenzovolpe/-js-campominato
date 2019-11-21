@@ -52,8 +52,9 @@ function livelligioco(livello) {
 }
 // Funzione che fà la logica del gioco
 function partita(min, max, mossa) {
+    console.log(min + '' + max  + '' + mossa);
     var numeriutente = []; //Dichiaro un array per conservare i numeri inseriti dall'utente
-    var numerotentativi =  max - numericasuali.length; // Numero massimo di giocate previste
+    var numerotentativi =  max - maxcasuali; // Numero massimo di giocate previste
     console.log(numerotentativi);
     // numerotentativi = 5;
     console.log('Numero di giocate previste ' + numerotentativi);
@@ -73,7 +74,9 @@ function partita(min, max, mossa) {
                 alert('Attenzione il numero: ' + numeroutente + 'è già stato inserito')
                 console.log('Questo numero è già inserito');
             }
-    } while ((numericasuali.includes(numeroutente)) && (giocate < numerotentativi));
+        console.log('Numero giocata: ' + giocate);
+        console.log('Punti utente: ' + puntiutente);
+    } while ((numericasuali.includes(numeroutente)) && (giocate < numerotentativi) && (puntiutente < maxcasuali));
     return mossa;
 }
 // Funzione che genera un array di numeri random tra min e max in base al livello scelto dall'utente
