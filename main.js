@@ -6,6 +6,7 @@ var massimo; // numero massimo da inserire
 var puntiutente = 0; // Variabile che memorizza i punti utente
 var esitomossa = false; // Variabile che ci indica se abbiamo beccato una mina o meno
 var giocate = 0; // // Variabile che conta le giocate effettuate
+
 // Chiedo all'utente il livello di difficoltà del gioco
 alert('Benvenuto nel Gioco Campo minato');
 var scelta = parseInt(prompt('Scegli il  livello di gioco: (digita 0 = facile; 1 = medio; 2 = difficile)'));
@@ -15,7 +16,7 @@ livelligioco(scelta);
 // Chiamo la funzione che genera l'array dei numeri casuali per giocare in base al livello scelto
 generatorenumerigioco(minimo, massimo);
 // Chiamo la funzione che regola il gioco
-esitomossa = partita(minimo,massimo,esitomossa);
+partita(minimo,massimo,esitomossa);
 // Chiamo la funzione che indica l'esito del risultato
 risultatogioco(esitomossa);
 
@@ -37,17 +38,17 @@ function risultatogioco(esito) {
 function livelligioco(livello) {
     // Utilizzo delle condizioni in base alla scelta dell'utente
     switch (livello) {
-        case 0:
-            minimo = 1;
-            massimo = 50;
-            break ;
         case 1:
             minimo = 1;
             massimo = 80;
             break ;
-        default:
+        case 2:
             minimo = 1;
             massimo = 100;
+            break ;
+        default:
+            minimo = 1;
+            massimo = 50;
     }
 }
 // Funzione che fà la logica del gioco
@@ -64,7 +65,7 @@ function partita(min, max, mossa) {
                 numeriutente.push(numeroutente); // Inserisco nell'array il numero digitato dall' utente
                 console.log(numeroutente);
                 if (numericasuali.includes(numeroutente)) {
-                    return mossa = true; // Imposto a vero la variabile che mi dice che ho trovato una mina
+                    return esitomossa = true; // Imposto a vero la variabile che mi dice che ho trovato una mina
                 } else {
                     puntiutente++; // Aggiorno i punti totalizzati dall'utente
                     giocate++; // Aggiorno le giocate fatte dall'utente
@@ -76,7 +77,7 @@ function partita(min, max, mossa) {
         console.log('Numero giocata: ' + giocate);
         console.log('Punti utente: ' + puntiutente);
     } while (giocate < numerotentativi);
-    return mossa;
+    return esitomossa;
 }
 // Funzione che genera un array di numeri random tra min e max in base al livello scelto dall'utente
 function generatorenumerigioco(min, max) {
