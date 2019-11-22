@@ -4,12 +4,14 @@ var numericasuali = []; // Array che conterra i numeri casuali generati dal comp
 var minimo; // numero minimo da inserire
 var massimo; // numero massimo da inserire
 var puntiutente = 0; // Variabile che memorizza i punti utente
+var numerovalido = false //VAriabile che indica se il numero inserito dall'utente è valido
 var esitomossa = false; // Variabile che ci indica se abbiamo beccato una mina o meno
 var giocate = 0; // // Variabile che conta le giocate effettuate
 
 // Chiedo all'utente il livello di difficoltà del gioco
 alert('Benvenuto nel Gioco Campo minato');
 var scelta = parseInt(prompt('Scegli il  livello di gioco: (digita 0 = facile; 1 = medio; 2 = difficile)'));
+
 
 // Chiamo la funzione di scelta dei livelli
 livelligioco(scelta);
@@ -42,6 +44,7 @@ function livelligioco(livello) {
             minimo = 1;
             massimo = 80;
             break ;
+
         case 2:
             minimo = 1;
             massimo = 100;
@@ -60,20 +63,18 @@ function partita(min, max, mossa) {
     // numerotentativi = 5;
     console.log('Numero di giocate previste ' + numerotentativi);
     do {
-        numeroutente = parseInt(prompt('Inserisci un numero da ' +  min + ' a ' + max));
-            if (!numeriutente.includes(numeroutente)) { // Controllo che l'utente non ha inserito di nuovo lo stesso numero
-                numeriutente.push(numeroutente); // Inserisco nell'array il numero digitato dall' utente
-                console.log(numeroutente);
-                if (numericasuali.includes(numeroutente)) {
-                    return esitomossa = true; // Imposto a vero la variabile che mi dice che ho trovato una mina
-                } else {
-                    puntiutente++; // Aggiorno i punti totalizzati dall'utente
-                    giocate++; // Aggiorno le giocate fatte dall'utente
-                }
+        numeroutente = parseInt(prompt('Inserisci un numero tra ' +  min + ' e ' + max));
+        console.log(numeroutente);
+        if (validanumero(numeroutente, numeriutente, min, max)) {
+            console.log(validanumero(numeroutente, numeriutente, min, max));
+            if (numericasuali.includes(numeroutente)) {
+                return esitomossa = true; // Imposto a vero la variabile che mi dice che ho trovato una mina
             } else {
-                alert('Attenzione il numero: ' + numeroutente + 'è già stato inserito')
-                console.log('Questo numero è già inserito');
+                puntiutente++; // Aggiorno i punti totalizzati dall'utente
+                giocate++; // Aggiorno le giocate fatte dall'utente
+                numeriutente.push(numeroutente); // Inserisco nell'array il numero digitato dall' utente
             }
+        }
         console.log('Numero giocata: ' + giocate);
         console.log('Punti utente: ' + puntiutente);
     } while (giocate < numerotentativi);
@@ -88,4 +89,15 @@ function generatorenumerigioco(min, max) {
         }
     }
     console.log(numericasuali);
+}
+// Funzione che controlla la validità del numero
+// E' valido se è un numero,  se è compreso tra min e max e se non è incluso nell'array dei numeri dell'utente
+function validanumero(numeroutente, numeriutente, min, max) {
+    if(!isNaN(numeroutente) && numeroutente >= min && numeroutente <= max && !numeriutente.includes(numeroutente)) {
+        return true;
+    } else {
+        console.log('numero non valido');
+        alert('Attenzione inserimento non valido');
+        return false;
+    }
 }
