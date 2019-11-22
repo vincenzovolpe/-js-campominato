@@ -44,7 +44,6 @@ function livelligioco(livello) {
             minimo = 1;
             massimo = 80;
             break ;
-
         case 2:
             minimo = 1;
             massimo = 100;
@@ -91,13 +90,23 @@ function generatorenumerigioco(min, max) {
     console.log(numericasuali);
 }
 // Funzione che controlla la validità del numero
-// E' valido se è un numero,  se è compreso tra min e max e se non è incluso nell'array dei numeri dell'utente
 function validanumero(numeroutente, numeriutente, min, max) {
-    if(!isNaN(numeroutente) && numeroutente >= min && numeroutente <= max && !numeriutente.includes(numeroutente)) {
+    // E' valido se è un numero,  se è compreso tra min e max e se non è incluso nell'array dei numeri dell'utente
+    var firstcondition;
+    var secondcondition;
+    var thirdcondition;
+    if((firstcondition = !isNaN(numeroutente)) && (secondcondition = numeroutente >= min && numeroutente <= max) && (thirdcondition = !numeriutente.includes(numeroutente))) {
         return true;
     } else {
-        console.log('numero non valido');
-        alert('Attenzione inserimento non valido');
-        return false;
+        if (firstcondition == false) {
+            alert('Attenzione! Non hai inserito un valore numerico');
+            return false;
+        } else if (secondcondition == false) {
+            alert('Attenzione! Il numero inserito non è compreso tra ' + min + ' e ' + max);
+            return false;
+        } else {
+            alert('Attenzion! hai già inserito questo numero');
+            return false;
+        }
     }
 }
