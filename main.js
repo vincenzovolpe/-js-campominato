@@ -15,8 +15,6 @@ var scelta = parseInt(prompt('Scegli il  livello di gioco: (digita 0 = facile; 1
 
 // Chiamo la funzione di scelta dei livelli
 livelligioco(scelta);
-// Chiamo la funzione che genera l'array dei numeri casuali per giocare in base al livello scelto
-generatorenumerigioco(minimo, massimo);
 // Chiamo la funzione che regola il gioco
 partita(minimo,massimo,esitomossa);
 // Chiamo la funzione che indica l'esito del risultato
@@ -55,6 +53,8 @@ function livelligioco(livello) {
 }
 // Funzione che fà la logica del gioco
 function partita(min, max, mossa) {
+    // Chiamo la funzione che genera l'array dei numeri casuali per giocare in base al livello scelto
+    generatorenumerigioco(min, max);
     console.log(min + '' + max  + '' + mossa);
     var numeriutente = []; //Dichiaro un array per conservare i numeri inseriti dall'utente
     var numerotentativi =  max - maxcasuali; // Numero massimo di giocate previste
