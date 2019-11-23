@@ -92,10 +92,10 @@ function generatorenumerigioco(min, max) {
 // Funzione che controlla la validità del numero
 function validanumero(numeroutente, numeriutente, min, max) {
     // E' valido se è un numero,  se è compreso tra min e max e se non è incluso nell'array dei numeri dell'utente
-    var firstcondition;
-    var secondcondition;
-    var thirdcondition;
-    if((firstcondition = !isNaN(numeroutente)) && (secondcondition = numeroutente >= min && numeroutente <= max) && (thirdcondition = !numeriutente.includes(numeroutente))) {
+    var firstcondition = !isNaN(numeroutente);
+    var secondcondition = numeroutente >= min && numeroutente <= max;
+    var thirdcondition = !numeriutente.includes(numeroutente);
+    if(firstcondition && secondcondition && thirdcondition) {
         return true;
     } else {
         if (firstcondition == false) {
